@@ -65,27 +65,25 @@ export default function SearchBar({ open, onOpenChange, userCoords, onNavigate }
 
   if (!open) {
     return (
-      <div className="absolute top-10 left-4 right-4 z-20 animate-fade-in" style={{ pointerEvents: "none" }}>
+      <div className="absolute top-10 left-4 z-20 animate-fade-in flex flex-col gap-2" style={{ pointerEvents: "none", width: "220px" }}>
         <button
           onClick={() => onOpenChange(true)}
           style={{ pointerEvents: "auto" }}
-          className="w-full glass rounded-xl px-3 py-2.5 flex items-center gap-2 transition-all active:scale-[0.98]"
+          className="glass rounded-xl px-4 py-3 flex items-center gap-2 transition-all active:scale-[0.98]"
         >
-          <Icon name="Search" size={14} className="text-muted-foreground flex-shrink-0" />
-          <span className="text-muted-foreground font-sans text-xs flex-1 text-left">Where to?</span>
-          <div className="flex items-center gap-1">
-            <div className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping-slow" />
-          </div>
+          <Icon name="Search" size={15} className="text-muted-foreground flex-shrink-0" />
+          <span className="text-muted-foreground font-sans text-sm flex-1 text-left">Where to?</span>
+          <div className="w-2 h-2 rounded-full bg-neon-cyan animate-ping-slow flex-shrink-0" />
         </button>
 
-        <div className="flex gap-1.5 mt-2 animate-fade-in delay-100" style={{ pointerEvents: "auto" }}>
+        <div className="flex gap-1.5 animate-fade-in delay-100" style={{ pointerEvents: "auto" }}>
           {QUICK_PLACES.map((item) => (
             <button
               key={item.label}
               onClick={() => handleQuick(item)}
-              className="flex-1 glass rounded-lg py-1.5 px-1 flex items-center justify-center gap-1 transition-all active:scale-95"
+              className="flex-1 glass rounded-xl py-2 px-1.5 flex flex-col items-center gap-1 transition-all active:scale-95"
             >
-              <Icon name={item.icon as "Home"} size={11} className="text-neon-cyan" />
+              <Icon name={item.icon as "Home"} size={13} className="text-neon-cyan" />
               <span className="text-[10px] font-medium text-foreground">{item.label}</span>
             </button>
           ))}
