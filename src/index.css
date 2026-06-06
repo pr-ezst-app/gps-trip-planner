@@ -250,3 +250,25 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Leaflet dark theme overrides */
+.leaflet-container {
+  background: hsl(220 20% 6%);
+  font-family: "Space Grotesk", sans-serif;
+}
+.leaflet-control-attribution {
+  background: hsl(220 18% 9% / 0.8) !important;
+  color: hsl(215 20% 45%) !important;
+  font-size: 9px !important;
+  backdrop-filter: blur(4px);
+  border-radius: 6px 0 0 0 !important;
+  border: none !important;
+  padding: 2px 6px !important;
+}
+.leaflet-control-attribution a {
+  color: hsl(174 100% 50% / 0.7) !important;
+}
+.leaflet-bar {
+  border: none !important;
+  box-shadow: none !important;
+}

@@ -12,18 +12,27 @@ export default function Index() {
   const [activeView, setActiveView] = useState<ActiveView>("map");
   const [navigating, setNavigating] = useState(false);
   const [destination, setDestination] = useState("");
+  const [destinationCoords, setDestinationCoords] = useState<[number, number] | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [userCoords, setUserCoords] = useState<[number, number] | null>(null);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background font-sans select-none">
-      <MapView navigating={navigating} activeView={activeView} />
+      <MapView
+        navigating={navigating}
+        activeView={activeView}
+        onLocationUpdate={(lat, lng) => setUserCoords([lat, lng])}
+        destinationCoords={destinationCoords}
+      />
 
       {activeView === "map" && !navigating && (
         <SearchBar
           open={searchOpen}
           onOpenChange={setSearchOpen}
-          onNavigate={(dest) => {
+          userCoords={userCoords}
+          onNavigate={(dest, coords) => {
             setDestination(dest);
+            setDestinationCoords(coords);
             setNavigating(true);
             setSearchOpen(false);
           }}
@@ -33,7 +42,10 @@ export default function Index() {
       {activeView === "map" && navigating && (
         <NavigationPanel
           destination={destination}
-          onStop={() => setNavigating(false)}
+          onStop={() => {
+            setNavigating(false);
+            setDestinationCoords(null);
+          }}
         />
       )}
 
