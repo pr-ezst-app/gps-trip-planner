@@ -65,30 +65,27 @@ export default function SearchBar({ open, onOpenChange, userCoords, onNavigate }
 
   if (!open) {
     return (
-      <div className="absolute top-0 left-0 right-0 z-20 flex flex-col items-stretch px-4 pt-12 pb-0 animate-fade-in" style={{ pointerEvents: "none" }}>
+      <div className="absolute top-10 left-4 right-4 z-20 animate-fade-in" style={{ pointerEvents: "none" }}>
         <button
           onClick={() => onOpenChange(true)}
           style={{ pointerEvents: "auto" }}
-          className="w-full glass rounded-2xl px-5 py-4 flex items-center gap-3 transition-all active:scale-[0.98]"
+          className="w-full glass rounded-xl px-3 py-2.5 flex items-center gap-2 transition-all active:scale-[0.98]"
         >
-          <Icon name="Search" size={18} className="text-muted-foreground" />
-          <span className="text-muted-foreground font-sans text-sm">Where to?</span>
-          <div className="ml-auto flex items-center gap-1.5">
-            <span className="text-xs bg-surface-2 text-muted-foreground px-2 py-0.5 rounded-full">GPS</span>
-            <div className="w-2 h-2 rounded-full bg-neon-cyan animate-ping-slow" />
+          <Icon name="Search" size={14} className="text-muted-foreground flex-shrink-0" />
+          <span className="text-muted-foreground font-sans text-xs flex-1 text-left">Where to?</span>
+          <div className="flex items-center gap-1">
+            <div className="w-1.5 h-1.5 rounded-full bg-neon-cyan animate-ping-slow" />
           </div>
         </button>
 
-        <div className="flex gap-2 mt-3 animate-fade-in delay-100" style={{ pointerEvents: "auto" }}>
+        <div className="flex gap-1.5 mt-2 animate-fade-in delay-100" style={{ pointerEvents: "auto" }}>
           {QUICK_PLACES.map((item) => (
             <button
               key={item.label}
               onClick={() => handleQuick(item)}
-              className="flex-1 glass rounded-xl py-3 px-2 flex flex-col items-center gap-1.5 transition-all active:scale-95"
+              className="flex-1 glass rounded-lg py-1.5 px-1 flex items-center justify-center gap-1 transition-all active:scale-95"
             >
-              <div className="w-8 h-8 rounded-xl bg-surface-2 flex items-center justify-center">
-                <Icon name={item.icon as "Home"} size={15} className="text-neon-cyan" />
-              </div>
+              <Icon name={item.icon as "Home"} size={11} className="text-neon-cyan" />
               <span className="text-[10px] font-medium text-foreground">{item.label}</span>
             </button>
           ))}
