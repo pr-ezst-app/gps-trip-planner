@@ -65,10 +65,10 @@ export default function SearchBar({ open, onOpenChange, userCoords, onNavigate }
 
   if (!open) {
     return (
-      <div className="absolute top-0 left-0 right-0 px-4 pt-12 z-20 animate-fade-in">
+      <div className="absolute top-0 left-0 right-0 px-4 pt-12 z-20 animate-fade-in pointer-events-none">
         <button
           onClick={() => onOpenChange(true)}
-          className="w-full glass rounded-2xl px-5 py-4 flex items-center gap-3 transition-all active:scale-[0.98]"
+          className="pointer-events-auto w-full glass rounded-2xl px-5 py-4 flex items-center gap-3 transition-all active:scale-[0.98]"
         >
           <Icon name="Search" size={18} className="text-muted-foreground" />
           <span className="text-muted-foreground font-sans text-sm">Where to?</span>
@@ -78,7 +78,7 @@ export default function SearchBar({ open, onOpenChange, userCoords, onNavigate }
           </div>
         </button>
 
-        <div className="flex gap-2 mt-3 animate-fade-in delay-100">
+        <div className="pointer-events-auto flex gap-2 mt-3 animate-fade-in delay-100">
           {QUICK_PLACES.map((item) => (
             <button
               key={item.label}
