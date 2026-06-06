@@ -15,8 +15,8 @@ const TABS: { id: ActiveView; icon: string; label: string }[] = [
 
 export default function BottomNav({ active, navigating, onChange }: Props) {
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-30">
-      <div className="mx-4 mb-6 glass-strong rounded-2xl px-2 py-2 flex items-center justify-around">
+    <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
+      <div className="inline-flex mb-6 ml-4 glass-strong rounded-2xl px-2 py-2 items-center gap-1 pointer-events-auto">
         {TABS.map((tab) => {
           const isActive = active === tab.id;
           const showPulse = tab.id === "share";
@@ -24,7 +24,7 @@ export default function BottomNav({ active, navigating, onChange }: Props) {
             <button
               key={tab.id}
               onClick={() => onChange(tab.id)}
-              className={`relative flex-1 flex flex-col items-center gap-1 py-2 px-3 rounded-xl transition-all active:scale-95 ${
+              className={`relative flex flex-col items-center gap-1 py-2 px-3 rounded-xl transition-all active:scale-95 ${
                 isActive ? "bg-neon-cyan/10" : "hover:bg-surface-2"
               }`}
             >
